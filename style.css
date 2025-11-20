@@ -1,0 +1,195 @@
+/* --- VARIABLES & RESET --- */
+:root {
+    --bg-dark: #050510;
+    --neon-pink: #ff00ff;
+    --neon-blue: #00ffff;
+    --neon-yellow: #ffff00;
+    --neon-green: #00ff00;
+    --font-title: 'Press Start 2P', cursive; /* Pixelada */
+    --font-body: 'VT323', monospace; /* Tipo terminal */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    /* Patrón estilo alfombra de arcade usando gradientes */
+    background-image: 
+        radial-gradient(circle, rgba(255,0,255,0.1) 10%, transparent 20%),
+        radial-gradient(circle, rgba(0,255,255,0.1) 10%, transparent 20%);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    color: #fff;
+    font-family: var(--font-body);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- EFECTO CRT (SCANLINES) --- */
+.crt-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.arcade-cabinet {
+    width: 90%;
+    max-width: 800px;
+    height: 90vh;
+    border: 4px solid var(--neon-blue);
+    box-shadow: 0 0 20px var(--neon-blue), inset 0 0 20px var(--neon-blue);
+    border-radius: 10px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* --- PANTALLAS Y TRANSICIONES --- */
+.screen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.5s ease;
+}
+
+.hidden { display: none; opacity: 0; }
+.active { display: flex; opacity: 1; }
+
+/* --- ESTILOS HOME --- */
+#screen-home .content-box {
+    text-align: center;
+    margin: auto;
+}
+
+.pixel-avatar {
+    width: 150px;
+    height: 150px;
+    border: 4px solid var(--neon-pink);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--neon-pink);
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: var(--font-title);
+    color: var(--neon-yellow);
+    font-size: 1.5rem;
+    text-shadow: 4px 4px var(--neon-pink);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.bio-text {
+    font-size: 1.5rem;
+    color: var(--neon-blue);
+    margin-bottom: 30px;
+}
+
+.arcade-btn {
+    background: transparent;
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: var(--font-title);
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+    text-transform: uppercase;
+}
+
+.arcade-btn:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.blink { animation: blinker 1s linear infinite; }
+@keyframes blinker { 50% { opacity: 0; } }
+
+/* --- ESTILOS CV INFO --- */
+.hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed var(--neon-blue);
+    margin-bottom: 15px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--neon-pink);
+    font-family: var(--font-title);
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.score {
+    font-family: var(--font-title);
+    color: var(--neon-yellow);
+    font-size: 0.8rem;
+}
+
+.scroll-container {
+    overflow-y: auto;
+    padding-right: 10px;
+    /* Custom Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-blue) #000;
+}
+
+.panel {
+    border: 2px solid #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.red-panel { border-color: var(--neon-pink); box-shadow: 0 0 5px var(--neon-pink); }
+.blue-panel { border-color: var(--neon-blue); box-shadow: 0 0 5px var(--neon-blue); }
+.green-panel { border-color: var(--neon-green); box-shadow: 0 0 5px var(--neon-green); }
+.yellow-panel { border-color: var(--neon-yellow); box-shadow: 0 0 5px var(--neon-yellow); }
+
+.panel h3 {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Grid para Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.skill-tag {
+    background: var(--neon-blue);
+    color: #000;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.entry { margin-bottom: 15px; border-left: 2px solid rgba(255,255,255,0.3); padding-left: 10px; }
+.entry-title { font-weight: bold; font-size: 1.3rem; color: var(--neon-yellow); }
+.entry-date { font-size: 1rem; opacity: 0.7; }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .arcade-cabinet { width: 100%; height: 100vh; border: none; border-radius: 0; }
+    h1 { font-size: 1rem; }
+    .pixel-avatar { width: 100px; height: 100px; }
+}

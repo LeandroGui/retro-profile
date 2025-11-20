@@ -1,0 +1,74 @@
+// --- DATOS ---
+const cvData = {
+    academic: [
+        { title: "Licenciatura en Análisis y Gestión de Datos", place: "Universidad Nacional de San Luis", year: "03/2025 - 06/2029" },
+        { title: "Full Stack AI (RAG & Agents)", place: "Bootcamp AI Planet", year: "06/2024 - 09/2024" },
+        { title: "FULL Stack AI (LLM) Engineer", place: "Bootcamp AI Planet", year: "08/2023 - 10/2023"},
+        { title: "Programa de Formación Multidisciplinario de Inteligencia Artificial", place: "Universidad de Buenos Aires", year: "09/2022 - 01/2023"},
+        { title: "Bootcamp Python", place: "Fundación Educativa Santísima Trinidad", year: "02/2022 - 07/2022"},
+        { title: "Administración Pública", place: "Instituto Superior Técnico de Estudios Económicos de Cuyo", year: "03/2020 - 12/2022"},
+    ],
+    skills: [
+        "Python", "LLMs", "RAG", "Agents", "Prompts Engineering", "Git", "GitHub", "VS Code", "Jupyter"
+    ],
+    languages: [
+        { lang: "Español", level: "Nativo" },
+        { lang: "Inglés", level: "General - Intermedio" }
+    ],
+    interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
+    email: "leandrodeep" + "@" + "gmail.com" // Ofuscación simple
+};
+
+// --- FUNCIONES DE NAVEGACIÓN ---
+function navigateTo(screenId) {
+    // Reproducir sonido opcional aquí si quisieras
+    document.querySelectorAll('.screen').forEach(s => {
+        s.classList.remove('active');
+        s.classList.add('hidden');
+    });
+    
+    const activeScreen = document.getElementById(screenId);
+    activeScreen.classList.remove('hidden');
+    activeScreen.classList.add('active');
+}
+
+// --- CARGA DE DATOS ---
+function loadData() {
+    // Cargar Educación
+    const eduContainer = document.getElementById('education-list');
+    cvData.academic.forEach(item => {
+        eduContainer.innerHTML += `
+            <div class="entry">
+                <div class="entry-title">${item.title}</div>
+                <div class="entry-place">${item.place}</div>
+                <div class="entry-date">[${item.year}]</div>
+            </div>
+        `;
+    });
+
+    // Cargar Habilidades
+    const skillsContainer = document.getElementById('skills-list');
+    cvData.skills.forEach(skill => {
+        skillsContainer.innerHTML += `<div class="skill-tag">${skill}</div>`;
+    });
+
+    // Cargar Idiomas
+    const langContainer = document.getElementById('languages-list');
+    cvData.languages.forEach(item => {
+        langContainer.innerHTML += `<li>> ${item.lang} [${item.level}]</li>`;
+    });
+
+    // Cargar Intereses
+    document.getElementById('interests-text').innerText = "> " + cvData.interests;
+
+    // Email seguro (Anti-bot básico)
+    const emailBtn = document.getElementById('secure-email');
+    emailBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert(`Envia un correo a: ${cvData.email}`);
+        // Opcional: window.location.href = `mailto:${cvData.email}`;
+    });
+}
+
+// Inicializar al cargar
+document.addEventListener('DOMContentLoaded', loadData);
