@@ -13,7 +13,13 @@
 ## 🛠️ Estructura del Proyecto
 
 ```text
-├── index.html      # Estructura semántica y contenedores "pantallas"
-├── style.css       # Variables CSS, Grid/Flexbox, Animaciones Keyframes
-├── script.js       # Lógica de navegación y Datos (JSON)
-└── README.md       # Documentación
+├── index.html      # Archivo principal
+├── style.css       # Estilos visuales
+├── script.js       # Lógica y Datos
+├── README.md       # Documentación
+├── sounds/         # Carpeta de Audio
+│   ├── music.mp3
+│   └── start.mp3
+└── images/         # Carpeta de Imágenes
+    ├── foto-perfil.jpg
+    └── favicon.png
