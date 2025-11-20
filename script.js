@@ -8,7 +8,7 @@ let isMuted = false;
 
 // Volumen inicial
 bgm.volume = 0.2;      // Música suave
-sfxStart.volume = 0.5; // Efecto Start presente
+sfxStart.volume = 0.8; // Efecto Start presente
 
 // --- DATOS DEL USUARIO (Leandro) ---
 const cvData = {
