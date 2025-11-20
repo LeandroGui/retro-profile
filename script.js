@@ -1,4 +1,16 @@
-// --- DATOS ---
+// --- CONFIGURACIÓN DE AUDIO ---
+const bgm = document.getElementById('bgm-music');
+const sfxStart = document.getElementById('sfx-start');
+const muteBtn = document.getElementById('mute-btn');
+const startBtn = document.getElementById('btn-start');
+
+let isMuted = false;
+
+// Volumen inicial
+bgm.volume = 0.2;      // Música suave
+sfxStart.volume = 0.5; // Efecto Start presente
+
+// --- DATOS DEL USUARIO (Leandro) ---
 const cvData = {
     academic: [
         { title: "Licenciatura en Análisis y Gestión de Datos", place: "Universidad Nacional de San Luis", year: "03/2025 - 06/2029" },
@@ -16,12 +28,30 @@ const cvData = {
         { lang: "Inglés", level: "General - Intermedio" }
     ],
     interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
-    email: "leandrodeep" + "@" + "gmail.com" // Ofuscación simple
+    email: "leandrodeep" + "@" + "gmail.com" 
 };
 
-// --- FUNCIONES DE NAVEGACIÓN ---
+// --- LÓGICA DE INICIO (START GAME) ---
+startBtn.addEventListener('click', () => {
+    // 1. Reproducir sonido
+    if (!isMuted) {
+        sfxStart.currentTime = 0;
+        sfxStart.play().catch(e => console.log("Audio error:", e));
+    }
+
+    // 2. Efecto visual en botón
+    startBtn.classList.remove('blink');
+    startBtn.innerText = "LOADING...";
+
+    // 3. Esperar 800ms y cambiar pantalla
+    setTimeout(() => {
+        navigateTo('screen-cv');
+    }, 800);
+});
+
+// --- FUNCIÓN DE NAVEGACIÓN ---
 function navigateTo(screenId) {
-    // Reproducir sonido opcional aquí si quisieras
+    // Ocultar/Mostrar pantallas
     document.querySelectorAll('.screen').forEach(s => {
         s.classList.remove('active');
         s.classList.add('hidden');
@@ -30,9 +60,40 @@ function navigateTo(screenId) {
     const activeScreen = document.getElementById(screenId);
     activeScreen.classList.remove('hidden');
     activeScreen.classList.add('active');
+
+    // Gestión de la Música según pantalla
+    if (screenId === 'screen-cv') {
+        if (!isMuted) {
+            bgm.play().catch(e => console.log("Autoplay blocked"));
+        }
+    } else if (screenId === 'screen-home') {
+        // Resetear música y botón al volver
+        bgm.pause();
+        bgm.currentTime = 0;
+        startBtn.innerText = "START GAME";
+        startBtn.classList.add('blink');
+    }
 }
 
-// --- CARGA DE DATOS ---
+// --- CONTROL DE MUTE ---
+muteBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+
+    if (isMuted) {
+        bgm.pause();
+        muteBtn.innerText = "🔇 OFF";
+        muteBtn.classList.add('muted');
+    } else {
+        // Si estamos en la pantalla 2, reanudar música
+        const isCvScreen = !document.getElementById('screen-cv').classList.contains('hidden');
+        if (isCvScreen) bgm.play();
+        
+        muteBtn.innerText = "🔊 ON";
+        muteBtn.classList.remove('muted');
+    }
+});
+
+// --- CARGA DE DATOS EN EL DOM ---
 function loadData() {
     // Cargar Educación
     const eduContainer = document.getElementById('education-list');
@@ -61,14 +122,13 @@ function loadData() {
     // Cargar Intereses
     document.getElementById('interests-text').innerText = "> " + cvData.interests;
 
-    // Email seguro (Anti-bot básico)
+    // Email seguro
     const emailBtn = document.getElementById('secure-email');
     emailBtn.addEventListener('click', (e) => {
         e.preventDefault();
         alert(`Envia un correo a: ${cvData.email}`);
-        // Opcional: window.location.href = `mailto:${cvData.email}`;
     });
 }
 
-// Inicializar al cargar
+// Inicializar
 document.addEventListener('DOMContentLoaded', loadData);

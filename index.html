@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player 1: Curriculum Vitae</title>
+    <title>Player 1: CV - Leandro Guiñazu</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -11,6 +11,15 @@
 <body>
 
     <div class="crt-overlay"></div>
+
+    <audio id="bgm-music" loop>
+        <source src="sounds/music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-start">
+        <source src="sounds/start.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="mute-btn" class="mute-toggle">🔊 ON</button>
 
     <main class="arcade-cabinet">
         
@@ -24,11 +33,11 @@
                 <p class="bio-text">
                     > IA (Gen AI)<br>
                     > Python<br>
-                    > Estudiante Lic. Análisis y Gestión de Datos
+                    > Estudiante Lic. en Análisis y Gestión de Datos
                 </p>
                 
                 <div class="action-area">
-                    <button class="arcade-btn blink" onclick="navigateTo('screen-cv')">START GAME</button>
+                    <button id="btn-start" class="arcade-btn blink">START GAME</button>
                 </div>
 
                 <div class="footer-contact">
