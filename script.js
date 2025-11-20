@@ -27,6 +27,22 @@ const cvData = {
         { lang: "Español", level: "Nativo" },
         { lang: "Inglés", level: "General - Intermedio" }
     ],
+    // --- NUEVA SECCIÓN: PROYECTOS ---
+    // (Edita los enlaces con tus URLs reales de GitHub)
+    projects: [
+        { 
+            name: "Challenge Bootcamp LLM", 
+            tech: "Python, Machine Learning, Transformers (BERT, GPT), Prompt Engineering, LangChain, GenAI Stack, Llama-Index, LLMs, RAG", 
+            desc: "1_Se utiliza el modelo Transformers y se crea una aplicación de generación de código con los datos proporcionados. 2_Se utiliza GenAI Stack y se crea una aplicación de chatbot como ChatGPT con datos propios.",
+            link: "https://github.com/LeandroGui/Challenge-Bootcamp-LLM" 
+        },
+        { 
+            name: "Challenge Bootcamp RAG & Agents", 
+            tech: "Python, Deep Learning, LLMs, LangChain, LlamaIndex, CrewAI, BeyondLLM, OpenAGI, Prompt Engineering, RAG, Agents", 
+            desc: "1_RAG Pipeline using BeyondLLM (Chat With PDF). 2_AI Agent using OpenAGI (Legislative Agent Spanish Version)",
+            link: "https://github.com/LeandroGui/Challenge-Bootcamp-RAG-Agents" 
+        }
+    ],
     interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
     email: "leandrodeep" + "@" + "gmail.com" 
 };
@@ -117,6 +133,21 @@ function loadData() {
     const langContainer = document.getElementById('languages-list');
     cvData.languages.forEach(item => {
         langContainer.innerHTML += `<li>> ${item.lang} [${item.level}]</li>`;
+    });
+
+    // --- NUEVO: Cargar Proyectos ---
+    const projectsContainer = document.getElementById('projects-list');
+    cvData.projects.forEach(proj => {
+        projectsContainer.innerHTML += `
+            <div class="project-card">
+                <div class="project-title">${proj.name}</div>
+                <div class="project-tech">[${proj.tech}]</div>
+                <div style="font-size: 0.9rem; margin-bottom: 8px;">${proj.desc}</div>
+                <a href="${proj.link}" target="_blank" class="project-link-btn">
+                    > ACCESS CODE
+                </a>
+            </div>
+        `;
     });
 
     // Cargar Intereses
