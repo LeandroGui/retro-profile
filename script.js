@@ -4,7 +4,7 @@ const cvData = {
         { title: "Licenciatura en Análisis y Gestión de Datos", place: "Universidad Nacional de San Luis", year: "03/2025 - 06/2029" },
         { title: "Full Stack AI (RAG & Agents)", place: "Bootcamp AI Planet", year: "06/2024 - 09/2024" },
         { title: "FULL Stack AI (LLM) Engineer", place: "Bootcamp AI Planet", year: "08/2023 - 10/2023"},
-        { title: "Programa de Formación Multidisciplinario de Inteligencia Artificial", place: "Universidad de Buenos Aires", year: "09/2022 - 01/2023"},
+        { title: "Formación en Inteligencia Artificial", place: "Universidad de Buenos Aires", year: "09/2022 - 01/2023"},
         { title: "Bootcamp Python", place: "Fundación Educativa Santísima Trinidad", year: "02/2022 - 07/2022"},
         { title: "Administración Pública", place: "Instituto Superior Técnico de Estudios Económicos de Cuyo", year: "03/2020 - 12/2022"},
     ],
