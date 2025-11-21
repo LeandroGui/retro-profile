@@ -80,10 +80,14 @@ function navigateTo(screenId) {
     if (screenId === 'screen-cv') {
         
         // 1. RESETEAR SCROLL AL INICIO
-        const scrollContainer = document.querySelector('.scroll-container');
-        if (scrollContainer) {
-            scrollContainer.scrollTop = 0;
-        }
+        // Usamos un pequeño setTimeout para asegurar que el navegador
+        // haya terminado de mostrar la pantalla antes de scrollear.
+        setTimeout(() => {
+            const scrollContainer = document.querySelector('.scroll-container');
+            if (scrollContainer) {
+                scrollContainer.scrollTop = 0;
+            }
+        }, 50); // 50ms de retraso para asegurar el renderizado
 
         // 2. Iniciar Música
         if (!isMuted) {
