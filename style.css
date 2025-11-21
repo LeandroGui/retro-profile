@@ -5,7 +5,7 @@
     --neon-blue: #00ffff;
     --neon-yellow: #ffff00;
     --neon-green: #00ff00;
-    --neon-purple: #bc13fe; /* NUEVO COLOR */
+    --neon-purple: #bc13fe;
     --font-title: 'Press Start 2P', cursive;
     --font-body: 'VT323', monospace;
 }
@@ -259,8 +259,78 @@ h1 {
     box-shadow: none;
 }
 
+/* --- RESPONSIVE DESIGN (MEJORADO) --- */
+
+/* 1. Tablets y Laptops Pequeñas */
+@media (max-width: 1024px) {
+    .arcade-cabinet {
+        width: 95%;
+        height: 95vh;
+    }
+}
+
+/* 2. Móviles (Modo Handheld) */
 @media (max-width: 600px) {
-    .arcade-cabinet { width: 100%; height: 100vh; border: none; border-radius: 0; }
-    h1 { font-size: 1rem; }
-    .pixel-avatar { width: 100px; height: 100px; }
+    body {
+        /* 'dvh' se ajusta dinámicamente si aparece/desaparece la barra del navegador */
+        height: 100dvh; 
+        align-items: flex-start; /* Alinea arriba para evitar cortes */
+    }
+
+    .arcade-cabinet {
+        width: 100%;
+        height: 100dvh; /* Pantalla completa real */
+        border: none;   /* Quitamos el borde grueso para ganar espacio */
+        border-radius: 0;
+        padding: 15px;  /* Padding reducido */
+        box-shadow: none; /* Quitamos el glow externo */
+    }
+
+    /* Ajuste de textos para que no se rompan */
+    h1 { font-size: 1rem; margin-bottom: 10px; }
+    
+    .player-name { font-size: 1.5rem; }
+    
+    .bio-text { 
+        font-size: 1.1rem; 
+        margin-bottom: 15px; 
+    }
+
+    /* Avatar un poco más pequeño */
+    .pixel-avatar {
+        width: 110px;
+        height: 110px;
+        border-width: 3px; /* Borde más fino */
+    }
+
+    /* Botón Start más fácil de tocar */
+    .arcade-btn {
+        width: 100%; /* Botón ancho completo */
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+
+    /* Ajustes de la Pantalla CV */
+    .hud-header {
+        font-size: 0.8rem;
+        padding-bottom: 10px;
+    }
+    
+    /* Si el Score molesta en pantallas muy angostas, lo ocultamos */
+    .score { 
+        display: none; 
+    }
+
+    .back-btn {
+        font-size: 1rem; /* Flecha de volver más grande */
+    }
+
+    /* Botón Mute más discreto en móvil */
+    .mute-toggle {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px;
+        font-size: 0.7rem;
+        opacity: 0.8; /* Un poco transparente para no tapar contenido */
+    }
 }
