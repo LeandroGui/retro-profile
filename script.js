@@ -27,8 +27,7 @@ const cvData = {
         { lang: "Español", level: "Nativo" },
         { lang: "Inglés", level: "General - Intermedio" }
     ],
-    // --- NUEVA SECCIÓN: PROYECTOS ---
-    // (Edita los enlaces con tus URLs reales de GitHub)
+    // --- SECCIÓN: PROYECTOS ---
     projects: [
         { 
             name: "Challenge Bootcamp LLM", 
@@ -77,13 +76,22 @@ function navigateTo(screenId) {
     activeScreen.classList.remove('hidden');
     activeScreen.classList.add('active');
 
-    // Gestión de la Música según pantalla
+    // Lógica específica al entrar a la pantalla del CV
     if (screenId === 'screen-cv') {
+        
+        // 1. RESETEAR SCROLL AL INICIO
+        const scrollContainer = document.querySelector('.scroll-container');
+        if (scrollContainer) {
+            scrollContainer.scrollTop = 0;
+        }
+
+        // 2. Iniciar Música
         if (!isMuted) {
             bgm.play().catch(e => console.log("Autoplay blocked"));
         }
+
     } else if (screenId === 'screen-home') {
-        // Resetear música y botón al volver
+        // Resetear música y botón al volver al inicio
         bgm.pause();
         bgm.currentTime = 0;
         startBtn.innerText = "START GAME";
@@ -135,7 +143,7 @@ function loadData() {
         langContainer.innerHTML += `<li>> ${item.lang} [${item.level}]</li>`;
     });
 
-    // --- NUEVO: Cargar Proyectos ---
+    // Cargar Proyectos
     const projectsContainer = document.getElementById('projects-list');
     cvData.projects.forEach(proj => {
         projectsContainer.innerHTML += `
