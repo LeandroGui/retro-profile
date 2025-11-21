@@ -73,9 +73,9 @@ body {
 .pixel-avatar {
     width: 150px;
     height: 150px;
-    border: 4px solid var(--neon-pink);
+    border: 4px solid var(--neon-blue);
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-blue);
     margin-bottom: 20px;
     object-fit: cover; 
 }
