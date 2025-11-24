@@ -38,13 +38,13 @@ const cvData = {
         { 
             name: "Challenge Bootcamp RAG & Agents", 
             tech: "Python, Deep Learning, LLMs, LangChain, LlamaIndex, CrewAI, BeyondLLM, OpenAGI, Prompt Engineering, RAG, Agents", 
-            desc: "1_RAG Pipeline using BeyondLLM (Chat With PDF). 2_AI Agent using OpenAGI (Legislative Agent Spanish Version)",
+            desc: "1_RAG Pipeline using BeyondLLM (Chat With PDF). 2_AI Agent using OpenAGI (Legislative Agent Spanish Version).",
             link: "https://github.com/LeandroGui/Challenge-Bootcamp-RAG-Agents" 
         },
         {
             name: "Chatbot Evolution", 
             tech: "Python, Gemini, LangChain, LangGraph, Agents", 
-            desc: "Este proyecto es un caso de estudio que demuestra la evolución en asistentes conversacionales",
+            desc: "Este proyecto es un caso de estudio que demuestra la evolución en asistentes conversacionales.",
             link: "https://github.com/LeandroGui/Chatbot-Evolution-Gemini"
         },
     ],
