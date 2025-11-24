@@ -46,7 +46,7 @@ const cvData = {
             tech: "Python, Gemini, LangChain, LangGraph, Agents", 
             desc: "Este proyecto es un caso de estudio que demuestra la evolución en asistentes conversacionales",
             link: "https://github.com/LeandroGui/Chatbot-Evolution-Gemini"
-        }
+        },
     ],
     interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
     email: "leandrodeep" + "@" + "gmail.com" 
