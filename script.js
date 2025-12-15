@@ -47,6 +47,12 @@ const cvData = {
             desc: "Este proyecto es un caso de estudio que demuestra la evolución en asistentes conversacionales.",
             link: "https://github.com/LeandroGui/Chatbot-Evolution-Gemini"
         },
+        {
+            name: "Agent Tutor University", 
+            tech: "Python, Gemini, LangChain, LangGraph, Agents, ,Pydantic, Weave", 
+            desc: "Este proyecto es un caso de estudio de un sistema agéntico diseñado para actuar como tutor universitario de programación en Python.",
+            link: "https://github.com/LeandroGui/Agent-Tutor-University"
+        }
     ],
     interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
     email: "leandrodeep" + "@" + "gmail.com" 
