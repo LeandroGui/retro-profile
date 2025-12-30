@@ -133,22 +133,37 @@ muteBtn.addEventListener('click', () => {
     }
 });
 
-/* Actualización v4.1 */
-// --- FIX: DESCARGA MÓVIL (CACHE BUSTER) ---
-// Esto soluciona el problema de que solo deja descargar una vez en Android/iOS
+/* Actualización v4.2 - SOLUCIÓN DEFINITIVA DESCARGA MÓVIL (GHOST LINK) */
 const downloadBtn = document.getElementById('btn-download');
 
 if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-        // Generamos un número único basado en el tiempo actual
+    downloadBtn.addEventListener('click', (e) => {
+        // 1. Evitamos que el botón haga su acción natural (navegar)
+        e.preventDefault();
+
+        // 2. Generamos el timestamp para engañar a la caché
         const timestamp = new Date().getTime();
         
-        // Al agregar ?v=número, el navegador cree que es un archivo nuevo
-        // y fuerza la descarga nuevamente.
-        downloadBtn.href = `docs/CV-LeandroG-Pro-Dic25.pdf?v=${timestamp}`;
+        // 3. Definimos la ruta EXACTA de tu archivo
+        // IMPORTANTE: Verifica mayúsculas y minúsculas aquí
+        const fileUrl = `docs/CV-LeandroG-Pro-Dic25.pdf?v=${timestamp}`;
+
+        // 4. Creamos un elemento <a> temporal en memoria (Enlace Fantasma)
+        const tempLink = document.createElement('a');
+        tempLink.href = fileUrl;
+        
+        // Nombre con el que se guardará el archivo en el dispositivo
+        tempLink.download = 'CV-Leandro-Guinazu.pdf'; 
+        tempLink.target = '_blank';
+
+        // 5. Lo agregamos al documento (necesario para Firefox/Android), 
+        // le hacemos clic y lo borramos.
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
     });
 }
-/* Fin Actualización v4.1 */
+/* Fin Actualización v4.2 */
 
 // --- CARGA DE DATOS EN EL DOM ---
 function loadData() {
