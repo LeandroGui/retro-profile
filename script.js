@@ -133,6 +133,23 @@ muteBtn.addEventListener('click', () => {
     }
 });
 
+/* Actualización v4.1 */
+// --- FIX: DESCARGA MÓVIL (CACHE BUSTER) ---
+// Esto soluciona el problema de que solo deja descargar una vez en Android/iOS
+const downloadBtn = document.getElementById('btn-download');
+
+if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+        // Generamos un número único basado en el tiempo actual
+        const timestamp = new Date().getTime();
+        
+        // Al agregar ?v=número, el navegador cree que es un archivo nuevo
+        // y fuerza la descarga nuevamente.
+        downloadBtn.href = `docs/CV-LeandroG-Pro-Dic25.pdf?v=${timestamp}`;
+    });
+}
+/* Fin Actualización v4.1 */
+
 // --- CARGA DE DATOS EN EL DOM ---
 function loadData() {
     // Cargar Educación
