@@ -133,37 +133,40 @@ muteBtn.addEventListener('click', () => {
     }
 });
 
-/* Actualización v4.2 - SOLUCIÓN DEFINITIVA DESCARGA MÓVIL (GHOST LINK) */
+/* Actualización v4.3 - FIX DEFINITIVO ANDROID (SIN _BLANK) */
 const downloadBtn = document.getElementById('btn-download');
 
 if (downloadBtn) {
     downloadBtn.addEventListener('click', (e) => {
-        // 1. Evitamos que el botón haga su acción natural (navegar)
+        // 1. Evitamos que el botón HTML haga su acción por defecto
         e.preventDefault();
 
-        // 2. Generamos el timestamp para engañar a la caché
+        // 2. Generamos el timestamp para evitar caché
         const timestamp = new Date().getTime();
         
-        // 3. Definimos la ruta EXACTA de tu archivo
-        // IMPORTANTE: Verifica mayúsculas y minúsculas aquí
+        // 3. Ruta exacta del archivo
         const fileUrl = `docs/CV-LeandroG-Pro-Dic25.pdf?v=${timestamp}`;
 
-        // 4. Creamos un elemento <a> temporal en memoria (Enlace Fantasma)
+        // 4. Creamos el enlace fantasma
         const tempLink = document.createElement('a');
         tempLink.href = fileUrl;
         
-        // Nombre con el que se guardará el archivo en el dispositivo
+        // Nombre del archivo final
         tempLink.download = 'CV-Leandro-Guinazu.pdf'; 
-        tempLink.target = '_blank';
+        
+        // --- CAMBIO CLAVE AQUÍ ---
+        // NO usamos target="_blank" en el JS. 
+        // Al usar '_self' (o no poner nada), Android entiende que es una descarga
+        // sobre la misma ventana y NO lo bloquea como "Popup sospechoso".
+        tempLink.target = '_self'; 
 
-        // 5. Lo agregamos al documento (necesario para Firefox/Android), 
-        // le hacemos clic y lo borramos.
+        // 5. Agregamos, clicamos y borramos
         document.body.appendChild(tempLink);
         tempLink.click();
         document.body.removeChild(tempLink);
     });
 }
-/* Fin Actualización v4.2 */
+/* Fin Actualización v4.3 */
 
 // --- CARGA DE DATOS EN EL DOM ---
 function loadData() {
