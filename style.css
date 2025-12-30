@@ -116,6 +116,25 @@ h1 {
 .blink { animation: blinker 1s linear infinite; }
 @keyframes blinker { 50% { opacity: 0; } }
 
+/* --- SOCIAL HUB --- */
+.social-hub {
+    margin: 20px 0; /* Separación entre el botón Start y el Email */
+}
+
+.social-icon svg {
+    width: 50px;       /* Tamaño visible */
+    height: 50px;
+    fill: var(--neon-purple); /* Color Violeta Neón (Proyectos) */
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 5px var(--neon-purple)); /* Brillo suave inicial */
+}
+
+.social-icon:hover svg {
+    transform: translateY(-5px) scale(1.1); /* Efecto levitar y crecer */
+    fill: #fff; /* Se pone blanco al tocarlo */
+    filter: drop-shadow(0 0 15px var(--neon-purple)); /* Brillo intenso */
+}
+
 /* --- ESTILOS CV INFO --- */
 .hud-header {
     display: flex;
