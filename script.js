@@ -133,40 +133,60 @@ muteBtn.addEventListener('click', () => {
     }
 });
 
-/* Actualización v4.3 - FIX DEFINITIVO ANDROID (SIN _BLANK) */
+/* Actualización v4.4 - FIX BLOB (Inmune a caché de Android) */
 const downloadBtn = document.getElementById('btn-download');
 
 if (downloadBtn) {
     downloadBtn.addEventListener('click', (e) => {
-        // 1. Evitamos que el botón HTML haga su acción por defecto
-        e.preventDefault();
+        e.preventDefault(); // Detenemos el link HTML normal
 
-        // 2. Generamos el timestamp para evitar caché
-        const timestamp = new Date().getTime();
-        
-        // 3. Ruta exacta del archivo
-        const fileUrl = `docs/CV-LeandroG-Pro-Dic25.pdf?v=${timestamp}`;
+        // 1. Feedback visual para el usuario (opcional pero recomendado)
+        const originalText = downloadBtn.innerHTML;
+        downloadBtn.innerText = "⌛ DOWNLOADING...";
+        downloadBtn.style.opacity = "0.7";
 
-        // 4. Creamos el enlace fantasma
-        const tempLink = document.createElement('a');
-        tempLink.href = fileUrl;
-        
-        // Nombre del archivo final
-        tempLink.download = 'CV-Leandro-Guinazu.pdf'; 
-        
-        // --- CAMBIO CLAVE AQUÍ ---
-        // NO usamos target="_blank" en el JS. 
-        // Al usar '_self' (o no poner nada), Android entiende que es una descarga
-        // sobre la misma ventana y NO lo bloquea como "Popup sospechoso".
-        tempLink.target = '_self'; 
+        // 2. Ruta del archivo real
+        const fileUrl = 'docs/CV-LeandroG-Pro-Dic25.pdf';
 
-        // 5. Agregamos, clicamos y borramos
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        document.body.removeChild(tempLink);
+        // 3. Usamos fetch para obtener el archivo como "datos crudos"
+        fetch(fileUrl)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.blob(); // Convertimos a Blob
+            })
+            .then(blob => {
+                // 4. Creamos una URL única en memoria para este blob
+                const blobUrl = window.URL.createObjectURL(blob);
+
+                // 5. Creamos el enlace fantasma usando esa URL de memoria
+                const tempLink = document.createElement('a');
+                tempLink.href = blobUrl;
+                tempLink.download = 'CV-Leandro-Guinazu.pdf'; // Nombre final del archivo
+                document.body.appendChild(tempLink);
+                
+                // 6. Clic y limpieza
+                tempLink.click();
+                
+                // Damos un pequeño respiro antes de borrar para que Android detecte el clic
+                setTimeout(() => {
+                    document.body.removeChild(tempLink);
+                    window.URL.revokeObjectURL(blobUrl); // Liberamos memoria
+                    
+                    // Restauramos el botón
+                    downloadBtn.innerHTML = originalText;
+                    downloadBtn.style.opacity = "1";
+                }, 100);
+            })
+            .catch(err => {
+                console.error("Error en descarga:", err);
+                alert("Error al descargar. Intenta de nuevo.");
+                // Restauramos el botón en caso de error
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.style.opacity = "1";
+            });
     });
 }
-/* Fin Actualización v4.3 */
+/* Fin Actualización v4.4 */
 
 // --- CARGA DE DATOS EN EL DOM ---
 function loadData() {
