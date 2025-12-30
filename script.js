@@ -161,7 +161,7 @@ if (downloadBtn) {
                 // 5. Creamos el enlace fantasma usando esa URL de memoria
                 const tempLink = document.createElement('a');
                 tempLink.href = blobUrl;
-                tempLink.download = 'CV-Leandro-Guinazu.pdf'; // Nombre final del archivo
+                tempLink.download = 'CV-Leandro-Guiñazu.pdf'; // Nombre final del archivo
                 document.body.appendChild(tempLink);
                 
                 // 6. Clic y limpieza
