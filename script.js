@@ -133,60 +133,22 @@ muteBtn.addEventListener('click', () => {
     }
 });
 
-/* Actualización v4.4 - FIX BLOB (Inmune a caché de Android) */
+/* Actualización v4.5 - MODO PREVIEW (Abre en nueva pestaña) */
 const downloadBtn = document.getElementById('btn-download');
 
 if (downloadBtn) {
-    downloadBtn.addEventListener('click', (e) => {
-        e.preventDefault(); // Detenemos el link HTML normal
-
-        // 1. Feedback visual para el usuario (opcional pero recomendado)
-        const originalText = downloadBtn.innerHTML;
-        downloadBtn.innerText = "⌛ DOWNLOADING...";
-        downloadBtn.style.opacity = "0.7";
-
-        // 2. Ruta del archivo real
-        const fileUrl = 'docs/CV-LeandroG-Pro-Dic25.pdf';
-
-        // 3. Usamos fetch para obtener el archivo como "datos crudos"
-        fetch(fileUrl)
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.blob(); // Convertimos a Blob
-            })
-            .then(blob => {
-                // 4. Creamos una URL única en memoria para este blob
-                const blobUrl = window.URL.createObjectURL(blob);
-
-                // 5. Creamos el enlace fantasma usando esa URL de memoria
-                const tempLink = document.createElement('a');
-                tempLink.href = blobUrl;
-                tempLink.download = 'CV-Leandro-Guiñazu.pdf'; // Nombre final del archivo
-                document.body.appendChild(tempLink);
-                
-                // 6. Clic y limpieza
-                tempLink.click();
-                
-                // Damos un pequeño respiro antes de borrar para que Android detecte el clic
-                setTimeout(() => {
-                    document.body.removeChild(tempLink);
-                    window.URL.revokeObjectURL(blobUrl); // Liberamos memoria
-                    
-                    // Restauramos el botón
-                    downloadBtn.innerHTML = originalText;
-                    downloadBtn.style.opacity = "1";
-                }, 100);
-            })
-            .catch(err => {
-                console.error("Error en descarga:", err);
-                alert("Error al descargar. Intenta de nuevo.");
-                // Restauramos el botón en caso de error
-                downloadBtn.innerHTML = originalText;
-                downloadBtn.style.opacity = "1";
-            });
+    downloadBtn.addEventListener('click', () => {
+        // NO usamos preventDefault(), queremos que el enlace funcione nativamente.
+        
+        // Solo actualizamos la URL con un timestamp para evitar que el navegador
+        // abra una versión vieja cacheada del PDF.
+        const timestamp = new Date().getTime();
+        
+        // Actualizamos el href justo antes de que el navegador abra la pestaña
+        downloadBtn.href = `docs/CV-LeandroG-Pro-Dic25.pdf?v=${timestamp}`;
     });
 }
-/* Fin Actualización v4.4 */
+/* Fin Actualización v4.5 */
 
 // --- CARGA DE DATOS EN EL DOM ---
 function loadData() {
