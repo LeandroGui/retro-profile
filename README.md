@@ -23,3 +23,5 @@
 └── images/         # Carpeta de Imágenes
     ├── foto-perfil.jpg
     └── favicon.png
+└── docs/           # Carpeta de Documentos
+    └── CV-LeandroG-Pro-Dic25.pdf
