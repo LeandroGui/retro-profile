@@ -21,7 +21,7 @@ const cvData = {
         { title: "Administración Pública", place: "Instituto Superior Técnico de Estudios Económicos de Cuyo", year: "03/2020 - 12/2022"},
     ],
     skills: [
-        "Python", "LLMs", "RAG", "Agents", "Prompts Engineering", "Git", "GitHub", "VS Code", "Jupyter"
+        "Python", "LLMs", "RAG", "Agents", "Prompts Engineering", "Git", "GitHub", "VS Code", "Jupyter", "Colab"
     ],
     languages: [
         { lang: "Español", level: "Nativo" },
@@ -52,7 +52,13 @@ const cvData = {
             tech: "Python, Gemini, LangChain, LangGraph, Agents, ,Pydantic, Weave", 
             desc: "Este proyecto es un caso de estudio de un sistema agéntico diseñado para actuar como tutor universitario de programación en Python.",
             link: "https://github.com/LeandroGui/Agent-Tutor-University"
-        }
+        },
+        {
+            name: "python ai agent roadmap", 
+            tech: "Python, Gemini, Agents, Pydantic, Weave", 
+            desc: "Este proyecto es un Roadmap diseñado con un objetivo: Construir un Agente de IA desde cero.",
+            link: "https://github.com/LeandroGui/python-ai-agent-roadmap"
+        },
     ],
     interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
     email: "leandrodeep" + "@" + "gmail.com" 
