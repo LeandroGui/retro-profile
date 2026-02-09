@@ -59,6 +59,12 @@ const cvData = {
             desc: "Este proyecto es un Roadmap diseñado con un objetivo: Construir un Agente de IA desde cero.",
             link: "https://github.com/LeandroGui/python-ai-agent-roadmap"
         },
+        {
+            name: "autonomous agentic system", 
+            tech: "Python, Gemini, Groq, Pydantic, Chroma, Prompt Engineering, RAG, Agents, Skills, MCP", 
+            desc: "Este proyecto es un sistema agentico autónomo, donde un orquestador (Agente) central gestiona la lógica de alto nivel y delega la ejecución de tareas en sub-agentes especializados.",
+            link: "https://github.com/LeandroGui/autonomous-agentic-system"
+        },
     ],
     interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
     email: "leandrodeep" + "@" + "gmail.com" 
