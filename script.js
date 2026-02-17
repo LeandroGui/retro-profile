@@ -31,7 +31,7 @@ const cvData = {
     projects: [
         {
             name: "autonomous agentic system", 
-            tech: "Python, Gemini, Groq, Pydantic, Chroma, Prompt Engineering, RAG, Agents, Skills, MCP", 
+            tech: "Python, Gemini, Groq, Pydantic, Chroma, Streamlit, Prompt Engineering, RAG, Agents, Skills, MCP", 
             desc: "Este proyecto es un sistema agentico autónomo, donde un orquestador (Agente) central gestiona la lógica de alto nivel y delega la ejecución de tareas en sub-agentes especializados.",
             link: "https://github.com/LeandroGui/autonomous-agentic-system"
         },
