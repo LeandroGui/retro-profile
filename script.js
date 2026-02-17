@@ -157,7 +157,7 @@ if (downloadBtn) {
         const timestamp = new Date().getTime();
         
         // Actualizamos el href justo antes de que el navegador abra la pestaña
-        downloadBtn.href = `docs/CV-LeandroG-Pro-Dic25.pdf?v=${timestamp}`;
+        downloadBtn.href = `docs/CV-LeandroG-Feb26.pdf?v=${timestamp}`;
     });
 }
 /* Fin Actualización v4.5 */
