@@ -29,23 +29,11 @@ const cvData = {
     ],
     // --- SECCIÓN: PROYECTOS ---
     projects: [
-        { 
-            name: "Challenge Bootcamp LLM", 
-            tech: "Python, Machine Learning, Transformers (BERT, GPT), Prompt Engineering, LangChain, GenAI Stack, Llama-Index, LLMs, RAG", 
-            desc: "1_Se utiliza el modelo Transformers y se crea una aplicación de generación de código con los datos proporcionados. 2_Se utiliza GenAI Stack y se crea una aplicación de chatbot como ChatGPT con datos propios.",
-            link: "https://github.com/LeandroGui/Challenge-Bootcamp-LLM" 
-        },
-        { 
-            name: "Challenge Bootcamp RAG & Agents", 
-            tech: "Python, Deep Learning, LLMs, LangChain, LlamaIndex, CrewAI, BeyondLLM, OpenAGI, Prompt Engineering, RAG, Agents", 
-            desc: "1_RAG Pipeline using BeyondLLM (Chat With PDF). 2_AI Agent using OpenAGI (Legislative Agent Spanish Version).",
-            link: "https://github.com/LeandroGui/Challenge-Bootcamp-RAG-Agents" 
-        },
         {
-            name: "Chatbot Evolution", 
-            tech: "Python, Gemini, LangChain, LangGraph, Agents", 
-            desc: "Este proyecto es un caso de estudio que demuestra la evolución en asistentes conversacionales.",
-            link: "https://github.com/LeandroGui/Chatbot-Evolution-Gemini"
+            name: "autonomous agentic system", 
+            tech: "Python, Gemini, Groq, Pydantic, Chroma, Prompt Engineering, RAG, Agents, Skills, MCP", 
+            desc: "Este proyecto es un sistema agentico autónomo, donde un orquestador (Agente) central gestiona la lógica de alto nivel y delega la ejecución de tareas en sub-agentes especializados.",
+            link: "https://github.com/LeandroGui/autonomous-agentic-system"
         },
         {
             name: "Agent Tutor University", 
@@ -53,17 +41,17 @@ const cvData = {
             desc: "Este proyecto es un caso de estudio de un sistema agéntico diseñado para actuar como tutor universitario de programación en Python.",
             link: "https://github.com/LeandroGui/Agent-Tutor-University"
         },
-        {
-            name: "python ai agent roadmap", 
-            tech: "Python, Gemini, Agents, Pydantic, Weave", 
-            desc: "Este proyecto es un Roadmap diseñado con un objetivo: Construir un Agente de IA desde cero.",
-            link: "https://github.com/LeandroGui/python-ai-agent-roadmap"
+        { 
+            name: "Challenge Bootcamp RAG & Agents", 
+            tech: "Python, Deep Learning, LLMs, LangChain, LlamaIndex, CrewAI, BeyondLLM, OpenAGI, Prompt Engineering, RAG, Agents", 
+            desc: "1_RAG Pipeline using BeyondLLM (Chat With PDF). 2_AI Agent using OpenAGI (Legislative Agent Spanish Version).",
+            link: "https://github.com/LeandroGui/Challenge-Bootcamp-RAG-Agents" 
         },
-        {
-            name: "autonomous agentic system", 
-            tech: "Python, Gemini, Groq, Pydantic, Chroma, Prompt Engineering, RAG, Agents, Skills, MCP", 
-            desc: "Este proyecto es un sistema agentico autónomo, donde un orquestador (Agente) central gestiona la lógica de alto nivel y delega la ejecución de tareas en sub-agentes especializados.",
-            link: "https://github.com/LeandroGui/autonomous-agentic-system"
+        { 
+            name: "Challenge Bootcamp LLM", 
+            tech: "Python, Machine Learning, Transformers (BERT, GPT), Prompt Engineering, LangChain, GenAI Stack, Llama-Index, LLMs, RAG", 
+            desc: "1_Se utiliza el modelo Transformers y se crea una aplicación de generación de código con los datos proporcionados. 2_Se utiliza GenAI Stack y se crea una aplicación de chatbot como ChatGPT con datos propios.",
+            link: "https://github.com/LeandroGui/Challenge-Bootcamp-LLM" 
         },
     ],
     interests: "Inteligencia Artificial, Deportes, Viajes, Lectura, Nuevas Tecnologías.",
